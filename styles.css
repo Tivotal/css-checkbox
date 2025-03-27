@@ -1,0 +1,112 @@
+/* Created by Tivotal */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #e8e8e8;
+}
+
+.checkbox input {
+  display: none;
+}
+
+.checkbox label {
+  position: relative;
+  display: block;
+  width: 50px;
+  height: 50px;
+  background: linear-gradient(43deg, #4158d0 0%, #c850c0 46%, #ffcc70 100%);
+  border-radius: 50%;
+  box-shadow: 0 3px 5px #ffbeb8;
+  cursor: pointer;
+  z-index: 1;
+  transition: 0.2s ease;
+  overflow: hidden;
+}
+
+.checkbox label::before {
+  position: absolute;
+  content: "";
+  width: 35px;
+  height: 35px;
+  background: #fff;
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: inset 0 3px 5px #ffbeb8;
+  transition: 0.2s ease;
+}
+
+.checkbox label:hover::before {
+  width: 28px;
+  height: 28px;
+}
+
+.checkbox label:active {
+  transform: scale(0.9);
+}
+
+.checkbox input:checked + label {
+  box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
+}
+
+.checkbox input:checked + label::before {
+  width: 0;
+  height: 0;
+}
+
+.checkbox .check-mark {
+  width: 30px;
+  height: 30px;
+  /*   background: blue; */
+  margin: 0 auto;
+  transform: rotateZ(-40deg);
+  position: absolute;
+  top: -1px;
+  right: 0;
+  left: -2.5px;
+  margin-left: 7px;
+}
+
+.checkbox label .check-mark::before,
+.checkbox label .check-mark::after {
+  position: absolute;
+  content: "";
+  background: #fff;
+  transition: 0.2s ease;
+  border-radius: 2px;
+  opacity: 0;
+}
+
+.checkbox .check-mark::before {
+  width: 5px;
+  height: 15px;
+  left: 0;
+  bottom: 0;
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.23);
+  transform: translateY(-34px);
+}
+
+.checkbox .check-mark::after {
+  width: 100%;
+  height: 5px;
+  left: 0;
+  bottom: 0;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.23);
+  transform: translateX(39px);
+}
+
+.checkbox input:checked + label .check-mark::before,
+.checkbox input:checked + label .check-mark::after {
+  opacity: 1;
+  transform: translate(0);
+}
